@@ -1,0 +1,26 @@
+From 309394d5954236ec8846d5da3912762fb4b5e026 Mon Sep 17 00:00:00 2001
+From: gfdgd_xi <3025613752@qq.com>
+Date: Sat, 27 Dec 2025 08:59:28 +0800
+Subject: [PATCH] feat: add riscv64 grub-efi support
+
+Signed-off-by: gfdgd_xi <3025613752@qq.com>
+---
+ src/modules/bootloader/main.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/modules/bootloader/main.py b/src/modules/bootloader/main.py
+index 0a9e965..d9c1da7 100644
+--- a/src/modules/bootloader/main.py
++++ b/src/modules/bootloader/main.py
+@@ -578,6 +578,8 @@ def get_grub_efi_parameters():
+         return "arm64-efi", "grubaa64.efi", "bootaa64.efi"
+     elif efi_bitness == "64" and cpu_type == "loongarch64":
+         return "loongarch64-efi", "grubloongarch64.efi", "bootloongarch64.efi"
++    elif efi_bitness == "64" and cpu_type == "riscv64":
++        return "riscv64-efi", "grubriscv64.efi", "bootriscv64.efi"
+     elif efi_bitness == "64":
+         # If it's not ARM, must by AMD64
+         return "x86_64-efi", "grubx64.efi", "bootx64.efi"
+-- 
+2.47.3
+
